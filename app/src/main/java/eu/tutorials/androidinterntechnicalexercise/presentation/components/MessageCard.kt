@@ -39,8 +39,8 @@ fun MessageCard(
     onEditMessage: (ChatMessage) -> Unit,
     onDeleteMessage: () -> Unit
 ) {
-    var showDialog by remember { mutableStateOf(false) }
-    var showSwipeDialog by remember { mutableStateOf(false) }
+    var showEditAndDeleteDialog by remember { mutableStateOf(false) }
+    var showReactionDialog by remember { mutableStateOf(false) }
     var isEditing by remember { mutableStateOf(false) }
     var editText by remember { mutableStateOf(message.content) }
 
@@ -58,10 +58,10 @@ fun MessageCard(
                 .pointerInput(Unit) {
                     detectTapGestures(
                         onLongPress = {
-                            showDialog = true
+                            showEditAndDeleteDialog = true
                         },
                         onDoubleTap = {
-                            showSwipeDialog = true
+                            showReactionDialog = true
                         }
                     )
                 },
@@ -136,29 +136,29 @@ fun MessageCard(
         }
     }
 
-    if (showDialog) {
+    if (showEditAndDeleteDialog) {
         EditDeleteDialog(
-            onDismissRequest = { showDialog = false },
+            onDismissRequest = { showEditAndDeleteDialog = false },
             onEdit = {
                 isEditing = true
-                showDialog = false
+                showEditAndDeleteDialog = false
                      },
             onDelete = {
                 onDeleteMessage()
-                showDialog = false
+                showEditAndDeleteDialog = false
             }
         )
     }
 
-    if (showSwipeDialog) {
+    if (showReactionDialog) {
         ReactionDialog(
-            onDismissRequest = { showSwipeDialog = false },
+            onDismissRequest = { showReactionDialog = false },
             onRemoveEmoji = {
                 message.emoji = null
-                showSwipeDialog = false
+                showReactionDialog = false
                             },
             onEmojiSelected = { emoji ->
-                showSwipeDialog = false
+                showReactionDialog = false
                 message.emoji = emoji
             },
             message = message
