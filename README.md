@@ -76,6 +76,8 @@ These instructions will get you a copy of the project up and running on your loc
 4.	Error Handling:
 -	The app gracefully handles any errors that may occur during the network request process or data processing. It displays error messages to users when necessary, providing a smooth and reliable user experience.
 
+ -  ![image_2024-06-05_202612408](https://github.com/amEya911/BasicChatScreen/assets/112489532/b32b693d-e083-433e-a552-7082a84b8db0)
+
 ## Future Enhancements
 
 -   User Authentication: Implement user authentication to enable secure communication between authenticated users.
