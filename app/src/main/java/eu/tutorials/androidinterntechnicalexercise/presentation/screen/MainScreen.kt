@@ -12,10 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.SoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import eu.tutorials.androidinterntechnicalexercise.model.ChatMessage
@@ -66,8 +68,7 @@ fun MainScreen(viewModel: ChatViewModel = viewModel()) {
                 .pointerInput(Unit) {
                     detectTapGestures(
                         onTap = {
-                            focusManager.clearFocus()
-                            keyBoardController?.hide()
+                            clearFocus(focusManager, keyBoardController)
                         }
                     )
                 }
@@ -106,5 +107,10 @@ fun MainScreen(viewModel: ChatViewModel = viewModel()) {
             )
         }
     }
+}
+
+private fun clearFocus(focusManager: FocusManager, keyBoardController: SoftwareKeyboardController?) {
+    focusManager.clearFocus()
+    keyBoardController?.hide()
 }
 

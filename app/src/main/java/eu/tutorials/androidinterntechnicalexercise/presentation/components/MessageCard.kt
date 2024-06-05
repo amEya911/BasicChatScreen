@@ -48,8 +48,7 @@ fun MessageCard(
 
     Row(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = MaterialTheme.spacing.medium),
+            .fillMaxWidth().padding(start = MaterialTheme.spacing.medium),
         horizontalArrangement = if (alignment == Alignment.End) Arrangement.End else Arrangement.Start
     ) {
         Card(
@@ -162,7 +161,6 @@ fun MessageCard(
                 showSwipeDialog = false
                 message.emoji = emoji
             },
-            emojis = listOf("👍", "👎", "😄", "😢", "😡", "😆", "😯", "😕", "😍", "🤔", "🙄", "🤩", "😎", "😴", "😋", "😬", "😇", "😈", "🤗", "🤔"),
             message = message
         )
     }

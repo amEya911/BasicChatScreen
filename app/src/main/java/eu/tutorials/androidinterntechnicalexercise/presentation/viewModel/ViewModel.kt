@@ -28,7 +28,7 @@ class ChatViewModel : ViewModel() {
                     ChatMessage("User ${it.userId}", it.title, getCurrentTimestamp(), true)
                 }
             } catch (e: Exception) {
-                errorMessage = "Error Loading Messages..."
+                errorMessage = "Error Loading Messages. Please try again."
             }
         }
     }

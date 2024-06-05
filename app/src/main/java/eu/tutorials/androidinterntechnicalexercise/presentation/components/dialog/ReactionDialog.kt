@@ -20,7 +20,7 @@ fun ReactionDialog(
     onDismissRequest: () -> Unit,
     onRemoveEmoji: () -> Unit,
     onEmojiSelected: (String) -> Unit,
-    emojis: List<String>,
+    emojis: List<String> = EMOJI_LIST,
     message: ChatMessage
 ) {
     AlertDialog(
@@ -54,3 +54,5 @@ fun ReactionDialog(
         }
     )
 }
+
+private val EMOJI_LIST = listOf("👍", "👎", "😄", "😢", "😡", "😆", "😯", "😕", "😍", "🤔", "🙄", "🤩", "😎", "😴", "😋", "😬", "😇", "😈", "🤗", "🤔")
