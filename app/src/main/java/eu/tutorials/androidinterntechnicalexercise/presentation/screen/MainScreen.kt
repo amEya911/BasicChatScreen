@@ -97,18 +97,9 @@ fun MainScreen(viewModel: ChatViewModel = viewModel()) {
                         )
                         viewModel.inputText = ""
                         coroutineScope.launch {
-                            delay(100)
                             val targetIndex = viewModel.messages.size - 1
-                            val itemHeight = 500.dp
-                            val totalScroll = targetIndex * itemHeight.value
-                            val steps = 5
-                            val durationMillis = 10L
-
-                            repeat(steps) {
-                                listState.animateScrollBy(totalScroll / steps)
-                                delay(durationMillis / steps)
-                            }
                             listState.scrollToItem(targetIndex)
+                            delay(100)
                         }
                     }
                 }

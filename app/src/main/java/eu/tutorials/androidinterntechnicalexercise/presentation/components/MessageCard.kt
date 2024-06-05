@@ -48,7 +48,8 @@ fun MessageCard(
 
     Row(
         modifier = Modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .padding(start = MaterialTheme.spacing.medium),
         horizontalArrangement = if (alignment == Alignment.End) Arrangement.End else Arrangement.Start
     ) {
         Card(

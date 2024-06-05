@@ -29,7 +29,9 @@ fun MessageInput(
 ) {
 
     Row(
-        modifier = Modifier.fillMaxWidth().padding(top = MaterialTheme.spacing.medium),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(MaterialTheme.spacing.medium),
         verticalAlignment = Alignment.CenterVertically
     ) {
         TextField(
