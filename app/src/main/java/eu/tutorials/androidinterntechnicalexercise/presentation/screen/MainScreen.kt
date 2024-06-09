@@ -69,9 +69,10 @@ fun MainScreen(viewModel: ChatViewModel = viewModel()) {
                             clearFocus(focusManager, keyBoardController)
                         }
                     )
-                }
+                },
+            reverseLayout = true
         ) {
-            items(viewModel.messages) { message ->
+            items(viewModel.messages.asReversed()) { message ->
                 MessageCard(
                     message = message,
                     onEditMessage = { updatedMessage ->
@@ -83,6 +84,7 @@ fun MainScreen(viewModel: ChatViewModel = viewModel()) {
                 )
             }
         }
+
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -96,9 +98,8 @@ fun MainScreen(viewModel: ChatViewModel = viewModel()) {
                         )
                         viewModel.inputText = ""
                         coroutineScope.launch {
-                            val targetIndex = viewModel.messages.size - 1
-                            listState.scrollToItem(targetIndex)
                             delay(100)
+                            listState.scrollToItem(0)
                         }
                     }
                 }
@@ -111,4 +112,3 @@ private fun clearFocus(focusManager: FocusManager, keyBoardController: SoftwareK
     focusManager.clearFocus()
     keyBoardController?.hide()
 }
-
