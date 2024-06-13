@@ -32,6 +32,8 @@ import eu.tutorials.androidinterntechnicalexercise.model.ChatMessage
 import eu.tutorials.androidinterntechnicalexercise.presentation.components.dialog.EditDeleteDialog
 import eu.tutorials.androidinterntechnicalexercise.presentation.components.dialog.ReactionDialog
 import eu.tutorials.androidinterntechnicalexercise.ui.spacing
+import eu.tutorials.androidinterntechnicalexercise.ui.theme.Blue
+import eu.tutorials.androidinterntechnicalexercise.ui.theme.Green
 
 @Composable
 fun MessageCard(
@@ -42,7 +44,7 @@ fun MessageCard(
     var showEditAndDeleteDialog by remember { mutableStateOf(false) }
     var showReactionDialog by remember { mutableStateOf(false) }
     var isEditing by remember { mutableStateOf(false) }
-    var editText by remember { mutableStateOf(message.content) }
+    var editText by remember(message) { mutableStateOf(message.content) }
 
     val alignment = if (message.isDummy) Alignment.Start else Alignment.End
 
@@ -100,7 +102,7 @@ fun MessageCard(
                 } else {
                     Text(
                         text = message.sender,
-                        color = if (message.isDummy) Color(0xFF06cb99) else Color(0xFF4cb4eb),
+                        color = if (message.isDummy) Green else Blue,
                         fontSize = 17.sp,
                     )
                     Text(text = message.content, color = MaterialTheme.colorScheme.onPrimary)
